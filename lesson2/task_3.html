@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_3</title>
+</head>
+
+<body>
+    <div>
+        <p>Объявить две целочисленные переменные a и b и задать им произвольные начальные значения<br>
+            Затем написать скрипт, который работает по следующему принципу (ноль можно считать положительным
+            числом):<br>
+
+            если a и b положительные, вывести их разность,<br>
+            если a и b отрицательные, вывести их произведение,<br>
+            если a и b разных знаков, вывести их сумму.<br>
+        </p>
+        <script defer>
+            const a = Number(prompt('Введите первое число', 0));
+            const b = Number(prompt('Введите второе число', 0));
+
+            if (!isNaN(a) && !isNaN(b)) {
+                if (a >= 0 && b >= 0) {
+                    alert(` a - b = ${a - b}`);
+                }
+                else if (a < 0 && b < 0) {
+                    alert(` a * b = ${a * b}`);
+                }
+                else if (a > 0 && b < 0 || a < 0 && b > 0) {
+                    alert(` a + b = ${a + b}`);
+                }
+            }
+            else {
+                alert("Ошибка ввода данных!");
+            }
+        </script>
+    </div>
+</body>
+
+</html>
