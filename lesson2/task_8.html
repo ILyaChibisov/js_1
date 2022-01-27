@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <P> С помощью рекурсии организовать функцию возведения числа в степень: function power(val, pow), где val – заданное
+        число, pow – степень.</P>
+    <script>
+        const val = Number(prompt('Введите число', 0));
+        const pow = Number(prompt('Введите степень', 0));
+
+
+        if (!isNaN(val) && !isNaN(pow)) {
+            const result = power(val, pow);
+            alert(result);
+        } else {
+
+            alert('Ошибка ввода данных!');
+        }
+
+        function power(val, pow) {
+            if (pow < 0) {
+                return 1 / (val * power(val, -pow - 1));
+            }
+            if (pow === 1) {
+                return val;
+            }
+            return val * power(val, pow - 1);
+        }
+
+    </script>
+</body>
+
+</html>
