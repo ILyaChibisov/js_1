@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_2</title>
+</head>
+
+<body>
+    <P>Продолжить работу с интернет-магазином: <br>
+        В прошлом домашнем задании вы реализовали корзину на базе массивов. <br>
+        Какими объектами можно заменить их элементы? Реализуйте такие объекты. <br>
+        Перенести функционал подсчета корзины на объектно-ориентированную базу.</P>
+    <script>
+
+        let basket = [];
+        // Вводим товары,цены, проверяем корректность ввода:
+
+        while (true) {
+            let name = prompt("Введите название товара, либо exit чтобы выйти");
+            if (name == "exit") {
+                break;
+            } else {
+                let price = Number(prompt("Введите стоимость товара!"));
+                if (!isNaN(price)) {
+                    basket.push(setProduct(name, price));
+                } else {
+                    alert("Некорректная цена товара, введите товар и цену заново!")
+                }
+            }
+        }
+
+        console.log(basket);
+
+        // получаем сумму цен товаров в корзине
+
+        let totalPrice = basket.reduce(function (prev, curr) { return prev + curr.Цена }, 0);
+
+        console.log(totalPrice)
+
+        // функция создает объкты после ввода пользователя
+
+        function setProduct(name, price) {
+            let product = {
+                "Название": name,
+                "Цена": price,
+            }
+            return product
+        }
+
+    </script>
+</body>
+
+</html>
