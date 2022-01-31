@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_5</title>
+</head>
+
+<body>
+    <P>Реализовать основные арифметические операции: сложение, вычитание, умножение, деление. <br>
+        Сделать их в виде функций с двумя параметрами <br>
+        Обязательно использовать оператор return</P>
+    <script type="text/javascript" src="task_5_functions.js"></script>
+    <script>
+        const a = Number(prompt('Введите число', 0));
+        const b = Number(prompt('Введите число', 0));
+        if (!isNaN(a) && !isNaN(b)) {
+            const operation = prompt('Введите операцию', "+");
+
+            if (operation == "+") {
+                alert(addition(a, b));
+            }
+            else if (operation == "-") {
+                alert(subtraction(a, b));
+            }
+            else if (operation == "*") {
+                alert(multiplication(a, b));
+            }
+            else if (operation == "/") {
+                alert(division(a, b));
+            }
+
+            else { alert("Данная операция не существует!") }
+        }
+
+        else {
+            alert("Вы ввели не цифры!")
+        }
+
+    </script>
+</body>
+
+</html>

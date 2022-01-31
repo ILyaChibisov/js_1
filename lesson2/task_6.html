@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_6</title>
+</head>
+
+<body>
+    <p>Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), <br> где arg1, arg2 –
+        значения аргументов, operation – строка с названием операции <br>
+        В зависимости от переданного значения операции выполнить одну из арифметических операций, <br> используя функции
+        из пункта 5, и вернуть полученное значение, используя switch.</p>
+    <script type="text/javascript" src="task_5_functions.js"></script>
+    <script>
+        const operation1 = '+';
+        const operation2 = '-';
+        const operation3 = '*';
+        const operation4 = '/';
+
+        const arg1 = Number(prompt('Введите первый аргумент', 0));
+        const arg2 = Number(prompt('Введите второй аргумент', 0));
+        const operation = prompt('Введите операцию', "+");
+
+        if (!isNaN(arg1) && !isNaN(arg2)) {
+            alert(mathOperation(arg1, arg2, operation));
+        }
+
+        else {
+            alert("Вы ввели не цифры!")
+        }
+
+        function mathOperation(arg1, arg2, operation) {
+            let result;
+
+            switch (operation) {
+                case operation1:
+                    result = addition(arg1, arg2);
+                    break;
+                case operation2:
+                    result = subtraction(arg1, arg2);
+                    break;
+                case operation3:
+                    result = multiplication(arg1, arg2);
+                    break;
+                case operation4:
+                    result = division(arg1, arg2);
+                    break;
+                default:
+                    result = "Нет такой операции!"
+
+            }
+
+            return result
+        }
+
+    </script>
+</body>
+
+</html>
