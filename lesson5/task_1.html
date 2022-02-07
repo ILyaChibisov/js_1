@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_1</title>
+</head>
+
+<body>
+    <p> Задача 1 <br>
+        Создать функцию, генерирующую шахматную доску. Можно использовать любые HTML‑теги. <br>
+        Доска должна быть верно разлинована на черные и белые ячейки. Строки должны нумероваться br
+        числами от 1 до 8, столбцы — латинскими буквами A, B, C, D, E, F, G, H. <br> </p>
+    <div></div>
+
+    <script>
+        const horisontalText = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+        const verticalText = [8, 7, 6, 5, 4, 3, 2, 1]
+
+        const blackColorDesk = ' <td style="border: 1px solid #000; background-color: black"></td>'
+        const whiteColorDesk = ' <td style="border: 1px solid #000; background-color: white"></td>'
+
+        var content2 = ' <tr> '
+        for (var i = 0; i < horisontalText.length; ++i) {
+            content2 += ' <th> ' + horisontalText[i] + ' </th> ';
+        }
+        content2 += ' </tr> '
+
+        var content3 = ''
+        for (var i = 0; i < verticalText.length; ++i) {
+            content3 += ' <tr>'
+            content3 += ' <th>' + verticalText[i] + ' </th>'
+            if (i % 2 == 0) {
+                content3 += whiteColorDesk + blackColorDesk + whiteColorDesk + blackColorDesk + whiteColorDesk + blackColorDesk + whiteColorDesk + blackColorDesk + ' </tr> '
+            }
+            else {
+                content3 += blackColorDesk + whiteColorDesk + blackColorDesk + whiteColorDesk + blackColorDesk + whiteColorDesk + blackColorDesk + whiteColorDesk + ' </tr> '
+            }
+
+        }
+
+        var content = document.querySelector("div")
+        content.innerHTML = '<table style="width: 500px; height: 500px; border-collapse: collapse;  table-layout: fixed;"> <tbody>' + content2 + content3 + ' </tbody> </table> '
+
+        console.log(content)
+    </script>
+</body>
+
+</html>
