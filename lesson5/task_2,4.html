@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tassk_2</title>
+</head>
+
+<body>
+    <P> Задача 2 <br>
+
+        Сделать генерацию корзины динамической, то есть верстка корзины не должна находиться в HTML-структуре. <br>
+        Там должен быть только div, в который будет вставляться корзина, сгенерированная кодом на JavaScript: <br>
+
+        Пустая корзина должна выводить строку «Корзина пуста». <br>
+        Наполненная должна выводить «В корзине: n товаров на сумму m рублей». <br>
+
+        <br>Задача 4(*) <br>
+
+        Добавить на страницу каталог товаров. Сделать так, чтобы товары в каталоге выводились при помощи JavaScript,
+        <br>
+        то есть при загрузке страницы на базе массива товаров генерировать разметку. <br>
+        Изначальный HTML‑код страницы должен содержать только <br>
+        "div id="catalog" без вложенного кода. Весь вид каталога генерируется с помощью JavaScript. <br>
+    </P>
+    <div></div>
+    <div id="catalog"></div>
+    <script>
+
+        // входные данные (решил не делать через обьекты эту задачку)
+
+        let products = ['Товар1', 'Товар2', 'Товар3', 'Товар4'];
+        let price = [1000, 3000, 5000, 7000];
+        let total = 0;
+        let countProduct = 0
+
+        // делаем  корзину
+
+        let basket = document.querySelector("div");
+        basket.id = "basket";
+        basket.setAttribute("style", "border: 1px solid #000; margin-top: 20px; width: 520px; height: 100px; text-align:center; font-weight: 600 ");
+        let textBasket = document.createTextNode("Корзина");
+        basket.appendChild(textBasket);
+
+        let basketStatus = document.createElement('p');
+        basketStatus.innerHTML = 'Корзина пуста!';
+        basket.appendChild(basketStatus);
+        document.body.appendChild(basket);
+
+
+        // делаем кнопки для товаров, ну и заодно прописываем клики по ним и работу счётчиков...
+
+        for (var i = 0; i < products.length; i++) {
+            var btn = document.createElement("button");
+            btn.setAttribute("style", "margin-right: 10px; margin-top: 10px;");
+            var textButton = document.createTextNode(products[i] + " в корзину");
+            btn.appendChild(textButton);
+            document.body.appendChild(btn);
+            let productPrice = price[i];
+            btn.addEventListener('click', () => {
+                total += productPrice;
+                countProduct++;
+                console.log(total);
+                console.log(countProduct);
+
+                // заморочился со склонением слова товаров))
+
+                if (countProduct < 2) {
+                    basketStatus.innerText = '«В корзине: ' + countProduct + ' товар на сумму ' + total + ' рублей»';
+                }
+                else if (countProduct > 1 && countProduct < 5) {
+                    basketStatus.innerText = '«В корзине: ' + countProduct + ' товара на сумму ' + total + ' рублей»';
+                }
+
+                else {
+                    basketStatus.innerText = '«В корзине: ' + countProduct + ' товаров на сумму ' + total + ' рублей»';
+
+                }
+            });
+
+        }
+
+        // кнопка обнуления корзины
+
+        var btn = document.createElement("button");
+        btn.setAttribute("style", "margin-right: 10px; margin-top: 10px; text-align:center; font-weight: 600");
+        var textButton = document.createTextNode("Очистить корзину");
+        btn.appendChild(textButton)
+        basket.appendChild(btn);
+        document.body.appendChild(basket);
+        btn.addEventListener('click', () => {
+            total = 0;
+            countProduct = 0;
+            basketStatus.innerHTML = 'Корзина пуста!';
+            console.log("Корзина пуста!");
+        });
+
+        // делаем каталог 
+
+        let catalog = document.getElementById("catalog")
+        let table = document.createElement('table');
+        table.innerText = "Каталог товаров и цены: "
+        catalog.appendChild(table);
+        let tr = document.createElement('tr');
+        table.appendChild(tr);
+        for (var i = 0; i < products.length; i++) {
+            let tr = document.createElement('tr');
+            table.appendChild(tr);
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            td1.setAttribute("style", "border: 1px solid #000;");
+            td2.setAttribute("style", "border: 1px solid #000;");
+            td1.innerText = products[i];
+            td2.innerText = price[i] + ' руб';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+        }
+    </script>
+</body>
+
+</html>
